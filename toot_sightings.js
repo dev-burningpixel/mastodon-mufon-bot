@@ -47,6 +47,8 @@ async function smartTooter(rows) {
         console.log("waiting 3 minutes 180000 ms...");
         await sleep(180000);
     }
+    
+    console.log("all sightings have been tooted...")
 }
 
 // toot out sightings for the day
@@ -72,7 +74,7 @@ async function tootSightings() {
                 });
             }
         } else {
-            console.log("No toots to write...");
+            console.log("No toots to write...\n");
         }
     });
 }
@@ -82,7 +84,7 @@ async function main() {
 }
 
 try {
-    console.log("\n\nstarting sighting toots...")
+    console.log("\ntooting out any new sightings...")
     main();
 } catch (err) {
     console.error(err);

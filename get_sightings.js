@@ -56,7 +56,6 @@ async function getSightings() {
                 // which is just the headers
                 for (let i = 2; i < reportRows.length; i++) {
                     let rowData = reportRows[i];
-                    console.log("\n[" + i.toString() + "] =======")
                     let splitData = rowData.textContent.split("\n");
 
                     // knowing the structure, the data is between 1-7
@@ -89,9 +88,6 @@ async function getSightings() {
 
                     sighting_post += "\n\n" + sighting["short_description"] + "\n\n";
                     sighting_post += "#ufo #mufon #ufomastodon #mufonmastodon #truthisoutthere"
-
-                    console.log(sighting_post);
-
                     sighting["toot"] = sighting_post;
 
                     const db = new sqlite3.Database("./local.db");
@@ -111,6 +107,8 @@ async function getSightings() {
                     });
                 }
 
+                console.log("getting sightings complete\n");
+
 
             }
 
@@ -128,7 +126,7 @@ async function main() {
 
 
 try {
-    console.log("starting mufon bot...");
+    console.log("getting sightings from mufon...");
     main();
 } catch (err) {
     console.error(err);
