@@ -8,4 +8,10 @@
 
 ### Bugs/Dev
 
-Right now get sightings and post sighting not running in needed order. Will fix but from async/await issues.
+**FIXED 11/11/22** ~~Right now get sightings and post sighting not running in needed order. Will fix but from async/await issues.~~
+
+Issue fixed by separating getting sightings and tooting sightings into separate scripts. Will need to run as
+
+```
+node get_sightings.js && node toot_sightings.js
+```
