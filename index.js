@@ -106,14 +106,14 @@ async function getSightings() {
 
                     const db = new sqlite3.Database("./local.db");
                     await db.serialize(() => {
-                        db.all("SELECT * FROM sightings WHERE case_number = ?", sighting.case_number, (err, rows) => {
+                        db.all("SELECT * FROM sightings WHERE case_number = ?", sighting.case_number, async (err, rows) => {
                             if (err) {
                                 console.error(err);
                             }
 
                             if (rows.length == 0) {
                                 console.log("sending to database case #" + sighting.case_number);
-                                addSighting(sighting);
+                                await addSighting(sighting);
                             } else {
                                 console.log("skipping case #" + sighting.case_number);
                             }
